@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zadatak_1.Models;
+using Zadatak_1.ViewModels;
 
 namespace Zadatak_1.Views
 {
@@ -19,9 +21,10 @@ namespace Zadatak_1.Views
     /// </summary>
     public partial class EditEmployeeView : Window
     {
-        public EditEmployeeView()
+        public EditEmployeeView(vwEmployee employeeToEdit)
         {
             InitializeComponent();
+            this.DataContext = new EditEmployeeViewModel(this, employeeToEdit);
         }
     }
 }

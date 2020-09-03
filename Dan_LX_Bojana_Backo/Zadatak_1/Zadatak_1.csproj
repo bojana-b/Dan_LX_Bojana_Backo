@@ -69,6 +69,7 @@
     <Compile Include="Models\ServiceSector.cs" />
     <Compile Include="Validations\PhoneNumberValidation.cs" />
     <Compile Include="ViewModels\AddEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\EditEmployeeViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AddEmployeeView.xaml.cs">

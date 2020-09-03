@@ -20,6 +20,30 @@ namespace Zadatak_1.ViewModels
         //Locations locations = new Locations();
         Calculations calculator = new Calculations();
 
+        public EditEmployeeViewModel(EditEmployeeView editEmployeeViewOpen, vwEmployee employeeToEdit)
+        {
+            editEmployeeView = editEmployeeViewOpen;
+            this.employee = employeeToEdit;
+            sector = employeeToEdit.SectorName;
+            GenderList = serviceEmployee.GetAllGender();
+            //LocationList = locations.GetAllLocations();
+            ManagerList = serviceEmployee.GetAllManagers(employee);
+            //gets user initial values before editing
+            CheckIsEmployeeChanged = new vwEmployee
+            {
+                Name = employeeToEdit.Name,
+                Surname = employeeToEdit.Surname,
+                NumberOfIdentityCard = employeeToEdit.NumberOfIdentityCard,
+                PhoneNumber = employeeToEdit.PhoneNumber,
+                JMBG = employeeToEdit.JMBG,
+                Gender = employeeToEdit.Gender,
+                Sector = employeeToEdit.Sector,
+                SectorName = employeeToEdit.SectorName,
+                Location = employeeToEdit.Location,
+                Manager = employee.Manager
+            };
+        }
+
         #region Properties
         public vwEmployee CheckIsEmployeeChanged { get; set; }
 
@@ -162,29 +186,7 @@ namespace Zadatak_1.ViewModels
                 return cancel;
             }
         }
-        public EditEmployeeViewModel(EditEmployeeView editEmployeeView, vwEmployee employeeToEdit)
-        {
-            this.editEmployeeView = editEmployeeView;
-            this.employee = employeeToEdit;
-            sector = employeeToEdit.SectorName;
-            GenderList = serviceEmployee.GetAllGender();
-            //LocationList = locations.GetAllLocations();
-            ManagerList = serviceEmployee.GetAllManagers(employee);
-            //gets user initial values before editing
-            CheckIsEmployeeChanged = new vwEmployee
-            {
-                Name = employeeToEdit.Name,
-                Surname = employeeToEdit.Surname,
-                NumberOfIdentityCard = employeeToEdit.NumberOfIdentityCard,
-                PhoneNumber = employeeToEdit.PhoneNumber,
-                JMBG = employeeToEdit.JMBG,
-                Gender = employeeToEdit.Gender,
-                Sector = employeeToEdit.Sector,
-                SectorName = employeeToEdit.SectorName,
-                Location = employeeToEdit.Location,
-                Manager = employee.Manager
-            };
-        }
+        
         /// <summary>
         /// This method invokes a methods for editing employee achecks if sector of employee exists. If not exist, invokes a method for adding sector.
         /// </summary>
