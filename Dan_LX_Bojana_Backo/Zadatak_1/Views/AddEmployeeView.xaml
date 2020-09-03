@@ -30,8 +30,19 @@
 
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">JMBG:</TextBlock>
-                    <TextBox Text="{Binding Employee.JMBG}" MinWidth="130"
-                         Background="RosyBrown" Foreground="White"/>
+                    <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                            MinWidth="130" Background="RosyBrown" Foreground="White">
+                        <TextBox.Text>
+                            <Binding Path="Employee.JMBG"
+                         UpdateSourceTrigger="PropertyChanged"
+                         ValidatesOnDataErrors="True"
+                         NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <Validation:JMBGValidation/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="8">
