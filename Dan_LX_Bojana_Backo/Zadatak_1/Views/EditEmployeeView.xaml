@@ -1,0 +1,94 @@
+﻿<Window x:Class="Zadatak_1.Views.EditEmployeeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zadatak_1.Views"
+        xmlns:Validation="clr-namespace:Zadatak_1.Validations"
+        Title="Edit Employee" SizeToContent="WidthAndHeight" FontSize="14" 
+        Background="AntiqueWhite" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <GroupBox Header="Personal Data" Margin="10" Padding="10" Background="AntiqueWhite">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">Name:</TextBlock>
+                    <TextBox Text="{Binding Employee.Name}" MinWidth="130"
+                         Background="RosyBrown" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">Surname:</TextBlock>
+                    <TextBox Text="{Binding Employee.Surname}" MinWidth="130"
+                         Background="RosyBrown" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">ID card number:</TextBlock>
+                    <TextBox Text="{Binding Employee.NumberOfIdentityCard}" MinWidth="130"
+                         Background="RosyBrown" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">JMBG:</TextBlock>
+                    <TextBox Text="{Binding Employee.JMBG}" MinWidth="130"
+                         Background="RosyBrown" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">Gender:</TextBlock>
+                    <ComboBox DisplayMemberPath="GenderIdentity" MinWidth="130"
+                              Background="RosyBrown" 
+                              ItemsSource="{Binding GenderList, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding Gender, UpdateSourceTrigger=PropertyChanged}"
+                              Text="{Binding Employee.GenderIdentity}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">Phone number:</TextBlock>
+                    <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                             MinWidth="130" Background="RosyBrown" Foreground="White">
+                        <TextBox.Text>
+                            <Binding Path="Employee.PhoneNumber"
+                         UpdateSourceTrigger="PropertyChanged"
+                         ValidatesOnDataErrors="True"
+                         NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <Validation:PhoneNumberValidation/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">Sector:</TextBlock>
+                    <TextBox Text="{Binding Sector}" MinWidth="130"
+                         Background="RosyBrown" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">Location:</TextBlock>
+                    <ComboBox DisplayMemberPath="Location" MinWidth="130"
+                              Background="RosyBrown"
+                              ItemsSource="{Binding LocationList, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding Location, UpdateSourceTrigger=PropertyChanged}"
+                              Text="{Binding Employee.Location}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="8">
+                    <TextBlock MinWidth="100">Manager:</TextBlock>
+                    <ComboBox DisplayMemberPath ="Employee" MinWidth="130"
+                              Background="RosyBrown" 
+                              ItemsSource="{Binding ManagerList, UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding Manager, UpdateSourceTrigger=PropertyChanged}"
+                              Text="{Binding Employee.ManagerName}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Save" Command="{Binding Save}" Width="100" Margin="0,20,0,0"/>
+                    <Button Content="Cancel" Command="{Binding Cancel}" Width="100" Margin="20,20,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -10,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Zadatak_1.ViewModels;
 
-namespace Zadatak_1
+namespace Zadatak_1.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EditEmployeeView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EditEmployeeView : Window
     {
-        public MainWindow()
+        public EditEmployeeView()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel(this);
         }
     }
 }

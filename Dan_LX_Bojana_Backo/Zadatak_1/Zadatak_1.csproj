@@ -64,6 +64,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Logger.cs" />
+    <Compile Include="Models\ServiceEmployee.cs" />
+    <Compile Include="Models\ServiceSector.cs" />
+    <Compile Include="Validations\PhoneNumberValidation.cs" />
+    <Compile Include="ViewModels\AddEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\AddEmployeeView.xaml.cs">
+      <DependentUpon>AddEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditEmployeeView.xaml.cs">
+      <DependentUpon>EditEmployeeView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +91,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AddEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ModelEmployee.Context.cs">
@@ -85,10 +106,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelEmployee.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelEmployee.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModelEmployee.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelEmployee.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEmployee.cs">
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblGender.cs">
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLocation.cs">
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSector.cs">
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwEmployee.cs">
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwGender.cs">
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwLocation.cs">
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwSector.cs">
+      <DependentUpon>ModelEmployee.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -127,10 +177,17 @@
     <Content Include="Models\ModelEmployee.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelEmployee.Context.cs</LastGenOutput>
+      <DependentUpon>ModelEmployee.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ModelEmployee.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelEmployee.edmx</DependentUpon>
+      <LastGenOutput>ModelEmployee.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
