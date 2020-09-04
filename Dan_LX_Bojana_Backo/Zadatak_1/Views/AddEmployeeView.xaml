@@ -12,19 +12,20 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">Name:</TextBlock>
-                    <TextBox Text="{Binding Employee.Name}" MinWidth="150"
+                    <TextBox Text="{Binding Employee.Name}" MinWidth="200"
                          Background="RosyBrown" Foreground="White"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">Surname:</TextBlock>
-                    <TextBox Text="{Binding Employee.Surname}" MinWidth="150"
+                    <TextBox Text="{Binding Employee.Surname}" MinWidth="200"
                          Background="RosyBrown" Foreground="White"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">ID card number:</TextBlock>
-                    <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}" MinWidth="150"
+                    <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}" 
+                             MinWidth="200"
                          Background="RosyBrown" Foreground="White">
                         <TextBox.Text>
                             <Binding Path="Employee.NumberOfIdentityCard"
@@ -42,7 +43,7 @@
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">JMBG:</TextBlock>
                     <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}"
-                            MinWidth="150" Background="RosyBrown" Foreground="White">
+                            MinWidth="200" Background="RosyBrown" Foreground="White">
                         <TextBox.Text>
                             <Binding Path="Employee.JMBG"
                          UpdateSourceTrigger="PropertyChanged"
@@ -58,7 +59,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">Gender:</TextBlock>
-                    <ComboBox DisplayMemberPath="GenderIdentity" MinWidth="150"
+                    <ComboBox DisplayMemberPath="GenderIdentity" MinWidth="200"
                               Background="RosyBrown"
                         ItemsSource="{Binding GenderList, UpdateSourceTrigger=PropertyChanged}"
                         SelectedItem="{Binding Gender, UpdateSourceTrigger=PropertyChanged}"/>
@@ -67,7 +68,7 @@
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">Phone number:</TextBlock>
                     <TextBox Validation.ErrorTemplate="{StaticResource errorTemplate}"
-                             MinWidth="150" Background="RosyBrown" Foreground="White">
+                             MinWidth="200" Background="RosyBrown" Foreground="White">
                         <TextBox.Text>
                             <Binding Path="Employee.PhoneNumber"
                          UpdateSourceTrigger="PropertyChanged"
@@ -83,13 +84,13 @@
 
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">Sector:</TextBlock>
-                    <TextBox Text="{Binding Sector}" MinWidth="150"
+                    <TextBox Text="{Binding Sector}" MinWidth="200"
                          Background="RosyBrown" Foreground="White"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">Location:</TextBlock>
-                    <ComboBox DisplayMemberPath="Location" MinWidth="150"
+                    <ComboBox DisplayMemberPath="Location" MinWidth="200"
                               Background="RosyBrown"
                         ItemsSource="{Binding LocationList, UpdateSourceTrigger=PropertyChanged}"
                         SelectedItem="{Binding Location, UpdateSourceTrigger=PropertyChanged}"/>
@@ -97,7 +98,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="8">
                     <TextBlock MinWidth="100">Manager:</TextBlock>
-                    <ComboBox DisplayMemberPath ="Employee" MinWidth="150"
+                    <ComboBox DisplayMemberPath ="Employee" MinWidth="200"
                               Background="RosyBrown" 
                         ItemsSource="{Binding ManagerList, UpdateSourceTrigger=PropertyChanged}"
                         SelectedItem="{Binding Manager, UpdateSourceTrigger=PropertyChanged}"/>
