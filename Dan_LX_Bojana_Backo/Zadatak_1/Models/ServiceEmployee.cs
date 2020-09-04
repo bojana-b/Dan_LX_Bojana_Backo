@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 
 namespace Zadatak_1.Models
@@ -158,6 +159,59 @@ namespace Zadatak_1.Models
                     List<vwGender> genders = new List<vwGender>();
                     genders = (from x in context.vwGenders select x).ToList();
                     return genders;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
+        // This method reads locations from file, adds them to database
+        public void AddLocations()
+        {
+            int id = 0;
+            using (EmployeeDBEntities context = new EmployeeDBEntities())
+            {
+                if (File.Exists(@"..\..\Locations.txt"))
+                {
+                    string[] readFile = File.ReadAllLines(@"..\..\Locations.txt");
+
+                    for (int i = 0; i < readFile.Length; i++)
+                    {
+                        if (!string.IsNullOrEmpty(readFile[i]))
+                        {
+                            string[] trim = readFile[i].Split(',');
+                            string address = trim[0];
+                            string city = trim[1];
+                            string country = trim[2];
+                            id++;
+
+                            tblLocation loc = new tblLocation()
+                            {
+                                LocationID = id,
+                                Address = address,
+                                City = city,
+                                State = country
+                            };
+                            context.tblLocations.Add(loc);
+                            context.SaveChanges();
+                        }
+                    }
+                }
+            }
+        }
+        // This method creates a list of data from view of locations
+        public List<vwLocation> GetAllLocations()
+        {
+            try
+            {
+                using (EmployeeDBEntities context = new EmployeeDBEntities())
+                {
+                    List<vwLocation> locations = new List<vwLocation>();
+                    locations = (from x in context.vwLocations select x).OrderBy(x => x.Address).ToList();
+                    return locations;
                 }
             }
             catch (Exception ex)

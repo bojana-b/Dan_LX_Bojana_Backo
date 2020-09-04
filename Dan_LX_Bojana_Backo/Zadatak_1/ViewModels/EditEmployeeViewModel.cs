@@ -17,7 +17,6 @@ namespace Zadatak_1.ViewModels
         EditEmployeeView editEmployeeView;
         ServiceEmployee serviceEmployee = new ServiceEmployee();
         ServiceSector serviceSector = new ServiceSector();
-        //Locations locations = new Locations();
         Calculations calculator = new Calculations();
 
         public EditEmployeeViewModel(EditEmployeeView editEmployeeViewOpen, vwEmployee employeeToEdit)
@@ -26,7 +25,7 @@ namespace Zadatak_1.ViewModels
             this.employee = employeeToEdit;
             sector = employeeToEdit.SectorName;
             GenderList = serviceEmployee.GetAllGender();
-            //LocationList = locations.GetAllLocations();
+            LocationList = serviceEmployee.GetAllLocations();
             ManagerList = serviceEmployee.GetAllManagers(employee);
             //gets user initial values before editing
             CheckIsEmployeeChanged = new vwEmployee

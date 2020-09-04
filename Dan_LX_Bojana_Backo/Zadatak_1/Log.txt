@@ -1,0 +1,4 @@
+[04.09.2020 11:40] Location Ulica BB, Ada, Srbija created.
+[04.09.2020 11:46] Location Ulica, BB, Ada created.
+[04.09.2020 12:08] Sector hr with ID 1 created.
+[04.09.2020 12:08] Employee  created. ID: 1 JMBG: 1109998556456

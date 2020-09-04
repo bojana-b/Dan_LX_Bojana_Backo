@@ -67,6 +67,7 @@
     <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\ServiceEmployee.cs" />
     <Compile Include="Models\ServiceSector.cs" />
+    <Compile Include="Validations\IDCardValidation.cs" />
     <Compile Include="Validations\JMBGValidation.cs" />
     <Compile Include="Validations\PhoneNumberValidation.cs" />
     <Compile Include="ViewModels\AddEmployeeViewModel.cs" />

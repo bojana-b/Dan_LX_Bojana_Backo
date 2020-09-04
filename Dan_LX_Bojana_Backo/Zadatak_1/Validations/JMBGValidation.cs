@@ -9,7 +9,7 @@ namespace Zadatak_1.Validations
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string jmbg = value as string;
-            if(jmbg.Length < 13)
+            if(jmbg.Length != 13)
             {
                 return new ValidationResult(false, "JMBG contains 13 digits");
             }

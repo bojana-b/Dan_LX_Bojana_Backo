@@ -12,14 +12,13 @@ namespace Zadatak_1.ViewModels
     {
         MainWindow main;
         ServiceEmployee serviceEmployee;
-        //Locations locations = new Locations();
 
         public MainWindowViewModel(MainWindow mainOpen)
         {
             main = mainOpen;
             serviceEmployee = new ServiceEmployee();
             EmployeeList = serviceEmployee.GetAllEmployees();
-            //locations.AddLocations();
+            serviceEmployee.AddLocations();
         }
 
         #region Properties
@@ -108,10 +107,10 @@ namespace Zadatak_1.ViewModels
         {
             try
             {
-                //EditEmployeeView editUser = new EditEmployeeView(Employee);
-                //editUser.ShowDialog();
-                ////invokes method to update a list of users
-                //EmployeeList = employees.GetAllEmployees();
+                EditEmployeeView editUser = new EditEmployeeView(Employee);
+                editUser.ShowDialog();
+                //invokes method to update a list of users
+                EmployeeList = serviceEmployee.GetAllEmployees();
             }
             catch (Exception ex)
             {
@@ -151,6 +150,39 @@ namespace Zadatak_1.ViewModels
         }
 
         public bool CanAddEmployeeExecute()
+        {
+            return true;
+        }
+
+        // Close Button
+        private ICommand close;
+        public ICommand Close
+        {
+            get
+            {
+                if (close == null)
+                {
+                    close = new RelayCommand(param => CloseExecute(), param => CanCloseExecute());
+                }
+                return close;
+            }
+        }
+        public void CloseExecute()
+        {
+            try
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to close?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    main.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        public bool CanCloseExecute()
         {
             return true;
         }

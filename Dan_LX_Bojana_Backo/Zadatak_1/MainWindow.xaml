@@ -13,6 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,6 +24,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Button Grid.Column="1" Grid.Row="1" Content="Add employee" HorizontalAlignment="Left" Command="{Binding AddEmployee}"/>
+        <Button Grid.Column="2" Grid.Row="1" Content="Close" HorizontalAlignment="Left" Command="{Binding Close}"/>
         <Grid Grid.Column="1" Grid.Row="3">
             <DataGrid ItemsSource="{Binding EmployeeList,UpdateSourceTrigger=PropertyChanged}"
                 SelectedItem="{Binding Employee, UpdateSourceTrigger=PropertyChanged}"

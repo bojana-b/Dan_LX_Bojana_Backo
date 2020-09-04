@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Zadatak_1.Commands;
 using Zadatak_1.HelperMethods;
 using Zadatak_1.Models;
+using Zadatak_1.Validations;
 using Zadatak_1.Views;
 
 namespace Zadatak_1.ViewModels
@@ -16,13 +17,12 @@ namespace Zadatak_1.ViewModels
         Calculations calculator = new Calculations();
         ServiceEmployee serviceEmployee = new ServiceEmployee();
         ServiceSector serviceSector = new ServiceSector();
-        //Locations locations = new Locations();
 
         public AddEmployeeViewModel(AddEmployeeView addEmployeeViewOpen)
         {
             addEmployeeView = addEmployeeViewOpen;
             GenderList = serviceEmployee.GetAllGender();
-            //LocationList = locations.GetAllLocations();
+            LocationList = serviceEmployee.GetAllLocations();
             ManagerList = serviceEmployee.GetAllEmployees();
             employee = new vwEmployee();
         }
@@ -181,15 +181,15 @@ namespace Zadatak_1.ViewModels
         
         public bool CanSaveExecute()
         {
-            DateTime date = DateTime.Now;
+            JMBGValidation validation = new JMBGValidation();
             try
             {
                 //checks if user input data valid
-                if (!String.IsNullOrEmpty(employee.Name) && !String.IsNullOrEmpty(employee.Surname) && employee.NumberOfIdentityCard.Length == 9 && employee.NumberOfIdentityCard.All(Char.IsDigit)
-                    && employee.JMBG.Length == 13 && employee.JMBG.All(Char.IsDigit) && Location != null && !String.IsNullOrEmpty(sector) && !String.IsNullOrEmpty(employee.PhoneNumber)  && Gender != null && calculator.CalculateDateOfBirth(employee.JMBG, out date) == true
+                if (!String.IsNullOrEmpty(employee.Name) && !String.IsNullOrEmpty(employee.Surname)
+                    && employee.JMBG.All(Char.IsDigit) && Location != null && !String.IsNullOrEmpty(sector) && !String.IsNullOrEmpty(employee.PhoneNumber)  && Gender != null
                     )
                 {
-                    Employee.DateOfBirth = date;
+                    Employee.DateOfBirth = validation.DateOfBirth(employee.JMBG);
                     return true;
                 }
                 else
